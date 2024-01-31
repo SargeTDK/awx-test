@@ -13,11 +13,6 @@
         email: '{{ lastname.lower() }}.{{ firstname[0].lower() }}@example.com'
         path: path
         state: present
-      vars:
-        lastname: Perisval
-        firstname: Koks
-        password: 123qweASD
-        path: OU=EXAMPLE.COM,DC=example,DC=com
       register: result
 
 - name: Test
