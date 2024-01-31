@@ -14,10 +14,3 @@
         path: path
         state: present
       register: result
-
-- name: Test
-  hosts: winservers
-  tasks:
-    - name: Return result
-      ansible.builtin.debug:
-        msg: '{{ result }}'
