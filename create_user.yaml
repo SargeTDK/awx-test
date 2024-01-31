@@ -1,5 +1,4 @@
 - name: Connect to win servers
-  hosts: winservers
   tasks:
     - name: Create User Koks
       microsoft.ad.user:
@@ -16,7 +15,6 @@
       register: result
 
 - name: Test
-  hosts: winservers
   tasks:
     - name: Return result
       ansible.builtin.debug:
