@@ -7,10 +7,10 @@
         firstname: '{{ firstname }}'
         lastname: '{{ lastname }}'
         display_name: '{{ lastname }} {{ firstname }}'
-        password: password
+        password: {{ password }}
         upn: '{{ lastname.lower() }}.{{ firstname[0].lower() }}@example.com'          # Generate UPN with variable and python
         sam_account_name: '{{ lastname.lower() }}.{{ firstname[0].lower() }}'
         email: '{{ lastname.lower() }}.{{ firstname[0].lower() }}@example.com'
-        path: path
+        path: {{ path }}
         state: present
       register: result
