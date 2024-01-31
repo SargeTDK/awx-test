@@ -1,0 +1,26 @@
+- name: Connect to win servers
+  hosts: winservers
+  tasks:
+    - name: Create User Koks
+      microsoft.ad.user:
+        name: '{{ lastname }} {{ firstname }}'
+        firstname: '{{ firstname }}'
+        lastname: '{{ lastname }}'
+        display_name: '{{ lastname }} {{ firstname }}'
+        password: 123qweASD
+        upn: '{{ lastname.lower() }}.{{ firstname[0].lower() }}@example.com'          # Generate UPN with variable and python
+        sam_account_name: '{{ lastname.lower() }}.{{ firstname[0].lower() }}'
+        email: '{{ lastname.lower() }}.{{ firstname[0].lower() }}@example.com'
+        path: OU=EXAMPLE.COM,DC=example,DC=com
+        state: present
+      vars:
+        lastname: Perisval
+        firstname: Koks
+      register: result
+
+- name: Test
+  hosts: winservers
+  tasks:
+    - name: Return result
+      ansible.builtin.debug:
+        msg: '{{ result }}'
