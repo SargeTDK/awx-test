@@ -1,16 +1,15 @@
 - name: Connect to win servers
-  hosts: winservers
+  hosts: winservers                                                                   # Group in AWX
   tasks:
     - name: Create User Koks
       microsoft.ad.user:
-        name: '{{ lastname }} {{ firstname }}'
+        name: '{{ lastname }} {{ firstname }}'                                        # Generate Name
         firstname: '{{ firstname }}'
         lastname: '{{ lastname }}'
-        display_name: '{{ lastname }} {{ firstname }}'
+        display_name: '{{ lastname }} {{ firstname }}'                                # Generate DisplayName
         password: '{{ password }}'
-        upn: '{{ lastname.lower() }}.{{ firstname[0].lower() }}@example.com'          # Generate UPN with variable and python
-        sam_account_name: '{{ lastname.lower() }}.{{ firstname[0].lower() }}'
-        email: '{{ lastname.lower() }}.{{ firstname[0].lower() }}@example.com'
+        upn: '{{ lastname.lower() }}.{{ firstname[0].lower() }}@example.com'          # Generate User Principal Name
+        sam_account_name: '{{ lastname.lower() }}.{{ firstname[0].lower() }}'         # Generate Sam Account Name
+        email: '{{ lastname.lower() }}.{{ firstname[0].lower() }}@example.com'        # Generate email
         path: '{{ path }}'
         state: present
-      register: result
