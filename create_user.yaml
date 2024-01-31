@@ -7,15 +7,17 @@
         firstname: '{{ firstname }}'
         lastname: '{{ lastname }}'
         display_name: '{{ lastname }} {{ firstname }}'
-        password: 123qweASD
+        password: password
         upn: '{{ lastname.lower() }}.{{ firstname[0].lower() }}@example.com'          # Generate UPN with variable and python
         sam_account_name: '{{ lastname.lower() }}.{{ firstname[0].lower() }}'
         email: '{{ lastname.lower() }}.{{ firstname[0].lower() }}@example.com'
-        path: OU=EXAMPLE.COM,DC=example,DC=com
+        path: path
         state: present
       vars:
         lastname: Perisval
         firstname: Koks
+        password: 123qweASD
+        path: OU=EXAMPLE.COM,DC=example,DC=com
       register: result
 
 - name: Test
